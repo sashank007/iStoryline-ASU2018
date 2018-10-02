@@ -1,0 +1,34 @@
+<header>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <h2>iStoryline-ASU</h2>
+    <mat-button-toggle value="menu" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </mat-button-toggle>
+
+
+</header>
+<mat-drawer-container class="sidenav-container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side">
+        <button mat-raised-button color="secondary">Characters
+            <mat-icon>face</mat-icon>
+
+        </button><br />
+        <button mat-raised-button color="secondary">Shape
+            <mat-icon>format_shapes</mat-icon>
+        </button>
+        <br />
+        <button mat-raised-button color="secondary">Text
+            <mat-icon>text_format</mat-icon>
+        </button>
+        <br />
+        <button mat-raised-button color="secondary">Story
+            <mat-icon>library_books</mat-icon>
+        </button><br />
+    </mat-drawer>
+
+    <div class="main-content">
+
+
+    </div>
+
+</mat-drawer-container>
