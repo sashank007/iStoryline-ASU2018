@@ -4,7 +4,12 @@
     <mat-button-toggle value="menu" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
     </mat-button-toggle>
-
+    <span>
+        <mat-button-toggle class="dataSetbutton"value="add" (click)="dataset.toggle()">
+            <mat-icon>add</mat-icon>
+        </mat-button-toggle>
+    </span>
+   
 
 </header>
 <mat-drawer-container class="sidenav-container" autosize>
@@ -26,9 +31,32 @@
         </button><br />
     </mat-drawer>
 
+
+    <mat-drawer #dataset class="sidenav" mode="side"  position="end">
+        <button mat-raised-button color="secondary">
+            <mat-icon>description</mat-icon>
+            Data Set I
+        </button><br />
+        <button mat-raised-button color="secondary">
+            <mat-icon>description</mat-icon>
+            Data Set II
+        </button>
+        <br />
+        <button mat-raised-button color="secondary">
+            <mat-icon>description</mat-icon>
+            Data Set III
+        </button>
+       
+    </mat-drawer>
+
     <div class="main-content">
 
 
     </div>
+
+
+
+
+   
 
 </mat-drawer-container>
