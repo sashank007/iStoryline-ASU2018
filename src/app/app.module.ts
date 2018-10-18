@@ -60,7 +60,7 @@ import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavDrawerComponent } from "./NavDrawer/navdrawer.component";
 import { AppComponent } from "./app.component";
-
+import { TextComponent } from "./TextComponent/text.component";
 @NgModule({
   exports: [
     CdkTableModule,
@@ -115,7 +115,7 @@ export class DemoMaterialModule {}
     ReactiveFormsModule
   ],
   entryComponents: [AppComponent],
-  declarations: [AppComponent, NavDrawerComponent],
+  declarations: [AppComponent, NavDrawerComponent, TextComponent],
   bootstrap: [AppComponent],
   providers: []
 })

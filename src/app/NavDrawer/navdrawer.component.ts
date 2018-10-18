@@ -10,12 +10,10 @@ import { MatIconRegistry } from "@angular/material";
 })
 export class NavDrawerComponent {
   showFiller = false;
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(
-      "thumbs-up",
-      sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/img/examples/thumbup-icon.svg"
-      )
-    );
+  showText: boolean = false;
+  showTextComponent() {
+    console.log("clicked");
+    console.log(this.showText);
+    this.showText = !this.showText;
   }
 }
