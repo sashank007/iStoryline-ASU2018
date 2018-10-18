@@ -10,8 +10,9 @@ import { MatIconRegistry } from "@angular/material";
 })
 export class NavDrawerComponent {
   showFiller = false;
+  subTemplates = ["character", "text", "shapes", "story"];
   showText: boolean = false;
-  showTextComponent() {
+  showSubTemplate() {
     console.log("clicked");
     console.log(this.showText);
     this.showText = !this.showText;
