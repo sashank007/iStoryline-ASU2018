@@ -116,7 +116,7 @@ export class DemoMaterialModule {}
     ReactiveFormsModule
   ],
   entryComponents: [AppComponent],
-  declarations: [AppComponent, NavDrawerComponent , graph],
+  declarations: [AppComponent, NavDrawerComponent , graph, TextComponent],
   bootstrap: [AppComponent],
   providers: []
 })
