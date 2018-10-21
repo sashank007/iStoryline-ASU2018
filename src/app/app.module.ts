@@ -59,6 +59,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavDrawerComponent } from "./NavDrawer/navdrawer.component";
+import {graph} from "./graph/graph";
 import { AppComponent } from "./app.component";
 import { TextComponent } from "./TextComponent/text.component";
 import { ShapesComponent } from "./ShapesComponent/shapes.component";
@@ -118,6 +119,7 @@ export class DemoMaterialModule {}
     ReactiveFormsModule
   ],
   entryComponents: [AppComponent],
+
   declarations: [
     AppComponent,
     NavDrawerComponent,
