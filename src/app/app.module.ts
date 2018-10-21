@@ -61,7 +61,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavDrawerComponent } from "./NavDrawer/navdrawer.component";
 import {graph} from "./graph/graph";
 import { AppComponent } from "./app.component";
-
+import { TextComponent } from "./TextComponent/text.component";
+import { ShapesComponent } from "./ShapesComponent/shapes.component";
+import { CharacterComponent } from "./CharacterComponent/character.component";
+import { StoryComponent } from "./StoryComponent/story.component";
 @NgModule({
   exports: [
     CdkTableModule,
@@ -116,7 +119,15 @@ export class DemoMaterialModule {}
     ReactiveFormsModule
   ],
   entryComponents: [AppComponent],
-  declarations: [AppComponent, NavDrawerComponent , graph, TextComponent],
+
+  declarations: [
+    AppComponent,
+    NavDrawerComponent,
+    TextComponent,
+    ShapesComponent,
+    CharacterComponent,
+    StoryComponent
+  ],
   bootstrap: [AppComponent],
   providers: []
 })
