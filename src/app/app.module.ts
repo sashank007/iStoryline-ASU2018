@@ -66,6 +66,7 @@ import { CharacterComponent } from "./CharacterComponent/character.component";
 import { StoryComponent } from "./StoryComponent/story.component";
 import { graph } from "./Graph/graph";
 import { DraggableComponent } from "./DraggableComponent/draggable.component";
+import { MultiLineChartComponent } from "./LineChartComponent/multi-series.component";
 @NgModule({
   exports: [
     CdkTableModule,
@@ -129,7 +130,8 @@ export class DemoMaterialModule {}
     CharacterComponent,
     StoryComponent,
     graph,
-    DraggableComponent
+    DraggableComponent,
+    MultiLineChartComponent
   ],
   bootstrap: [AppComponent],
   providers: []
