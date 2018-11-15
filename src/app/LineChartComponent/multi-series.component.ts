@@ -19,6 +19,11 @@ export class MultiLineChartComponent implements OnInit {
   title = "Little Red Riding Hood";
   private _newColor: string;
   private _newCharacter: string;
+  @Input()
+  set hideCharacters(characters: any) {
+    console.log("new value for hideCharacters in multi-series", characters);
+    this.hideChars(characters);
+  }
   // @Input() newColor: string;
   @Input()
   set newColor(color: string) {
@@ -53,6 +58,7 @@ export class MultiLineChartComponent implements OnInit {
     // this.colorChange();
     this.drawPath();
   }
+
   private colorChange(color, character): void {
     d3.select("#" + character).style("stroke", color);
   }
@@ -101,7 +107,17 @@ export class MultiLineChartComponent implements OnInit {
       })
     );
   }
-
+  private hideChars(characters: any) {
+    // d3.select("#" + "Grandma").style("stroke", "red");
+    if (characters) {
+      for (let char of characters) {
+        console.log("character ", char);
+        d3.select("#" + char).remove();
+        d3.select("#" + char).style("font", "20px sans-serif");
+        // d3.select("#" + char).style("font", "0px san-serif");
+      }
+    }
+  }
   private drawAxis(): void {
     // this.g
     //   .append("g")

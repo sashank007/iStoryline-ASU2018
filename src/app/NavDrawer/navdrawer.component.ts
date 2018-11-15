@@ -17,6 +17,7 @@ export class NavDrawerComponent {
   hero = "batman";
   @Input("newColor") newColor: string;
   @Input("newCharacter") newCharacter: string;
+  @Input("hideCharacters") hideCharacters: any;
   showSubTemplate() {
     console.log("clicked");
     console.log(this.showText);
@@ -34,5 +35,9 @@ export class NavDrawerComponent {
       this.colorChange,
       this.characterId
     );
+  }
+  onCharacterHide(characters: any) {
+    console.log("onCharacterHide navdrawer", characters);
+    this.hideCharacters = characters;
   }
 }
