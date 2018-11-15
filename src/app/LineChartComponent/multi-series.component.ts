@@ -42,7 +42,7 @@ export class MultiLineChartComponent implements OnInit {
   }
 
   private initChart(): void {
-    this.svg = d3.select("svg");
+    this.svg = d3.select("#svgChart");
 
     this.width = this.svg.attr("width") - this.margin.left - this.margin.right;
     this.height =
@@ -88,22 +88,24 @@ export class MultiLineChartComponent implements OnInit {
   }
 
   private drawAxis(): void {
-    this.g
-      .append("g")
-      .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + this.height + ")")
-      .call(d3Axis.axisBottom(this.x));
-
-    this.g
-      .append("g")
-      .attr("class", "axis axis--y")
-      .call(d3Axis.axisLeft(this.y))
-      .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
-      .attr("fill", "#000");
-    // .text("Temperature, ºF");
+    // this.g
+    //   .append("g")
+    //   .attr("class", "axis axis--x")
+    //   .attr("transform", "translate(0," + this.height + ")")
+    //   .call(d3Axis.axisBottom(this.x));
+    // this.g
+    //   .append("g")
+    //   .attr("class", "axis axis--y")
+    //   .call(d3Axis.axisLeft(this.y))
+    //   .append("text")
+    //   .attr("transform", "rotate(-90)")
+    //   .attr("y", 6)
+    //   .attr("dy", "0.71em")
+    //   .attr("fill", "#000");
+    // // .text("Temperature, ºF");
+  }
+  public removeLine(): void {
+    d3.select("");
   }
 
   private drawPath(): void {
@@ -118,7 +120,16 @@ export class MultiLineChartComponent implements OnInit {
       .append("path")
       .attr("class", "line")
       .attr("d", d => this.line(d.values))
-      .style("stroke", d => this.z(d.id));
+      // .style("stroke", d => this.z(d.id));
+      .style("stroke", "black")
+      .attr("id", function(d) {
+        return d.id;
+      })
+      .on("click", function(d) {
+        console.log("clicked on path of id", d.id);
+        d3.select("#" + d.id).style("stroke", "blue");
+        d3.event.stopPropagation();
+      });
 
     city
       .append("text")
@@ -135,6 +146,10 @@ export class MultiLineChartComponent implements OnInit {
       .style("font", "13px sans-serif")
       .text(function(d) {
         return d.id;
+      })
+      .on("click", function(d) {
+        console.log("clicked on city", d.id);
+        d3.event.stopPropagation();
       });
   }
 }

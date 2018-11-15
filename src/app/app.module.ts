@@ -12,7 +12,7 @@
 // })
 // export class AppModule {}
 import "../polyfills";
-
+import { ColorPickerModule } from "ngx-color-picker";
 import { CdkTableModule } from "@angular/cdk/table";
 import { CdkTreeModule } from "@angular/cdk/tree";
 import { HttpClientModule } from "@angular/common/http";
@@ -67,6 +67,7 @@ import { StoryComponent } from "./StoryComponent/story.component";
 import { graph } from "./Graph/graph";
 import { DraggableComponent } from "./DraggableComponent/draggable.component";
 import { MultiLineChartComponent } from "./LineChartComponent/multi-series.component";
+import { ColorComponent } from "./ColorComponent/color.component";
 @NgModule({
   exports: [
     CdkTableModule,
@@ -118,7 +119,8 @@ export class DemoMaterialModule {}
     HttpClientModule,
     DemoMaterialModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule
   ],
   entryComponents: [AppComponent],
 
@@ -131,7 +133,8 @@ export class DemoMaterialModule {}
     StoryComponent,
     graph,
     DraggableComponent,
-    MultiLineChartComponent
+    MultiLineChartComponent,
+    ColorComponent
   ],
   bootstrap: [AppComponent],
   providers: []
