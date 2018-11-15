@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from "@angular/core";
+import { Component, ViewEncapsulation, OnInit, Input } from "@angular/core";
 
 import * as d3 from "d3-selection";
 import * as d3Scale from "d3-scale";
@@ -17,9 +17,21 @@ import { LRRH } from "../../../shared";
 })
 export class MultiLineChartComponent implements OnInit {
   title = "Little Red Riding Hood";
-
+  private _newColor: string;
+  private _newCharacter: string;
+  // @Input() newColor: string;
+  @Input()
+  set newColor(color: string) {
+    this._newColor = color;
+    console.log("value for setted newColor", color);
+  }
+  @Input()
+  set newCharacter(character: string) {
+    this._newCharacter = character;
+    console.log("value for setted newCharacter in multi-series", character);
+    this.colorChange(this._newColor, this._newCharacter);
+  }
   data: any;
-
   svg: any;
   margin = { top: 20, right: 80, bottom: 30, left: 50 };
   g: any;
@@ -38,9 +50,12 @@ export class MultiLineChartComponent implements OnInit {
 
     this.initChart();
     this.drawAxis();
+    // this.colorChange();
     this.drawPath();
   }
-
+  private colorChange(color, character): void {
+    d3.select("#" + character).style("stroke", color);
+  }
   private initChart(): void {
     this.svg = d3.select("#svgChart");
 
@@ -104,9 +119,12 @@ export class MultiLineChartComponent implements OnInit {
     //   .attr("fill", "#000");
     // // .text("Temperature, ºF");
   }
-  public removeLine(): void {
-    d3.select("");
-  }
+  // public removeLine(): void {
+  //   d3.select("");
+  // }
+  // private colorChange(): void {
+  //   d3.select("");
+  // }
 
   private drawPath(): void {
     let city = this.g

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 @Component({
   selector: "color-app",
@@ -7,7 +7,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 })
 export class ColorComponent {
   title = "Color";
-
+  @Output() colorChange = new EventEmitter<FormGroup>();
   colorForm = new FormGroup({
     color: new FormControl(""),
     character: new FormControl("")
@@ -15,5 +15,6 @@ export class ColorComponent {
 
   public onSubmit(): void {
     console.log("change color", this.colorForm.value);
+    this.colorChange.emit(this.colorForm.value);
   }
 }
