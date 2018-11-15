@@ -159,7 +159,7 @@ export class MultiLineChartComponent implements OnInit {
         d =>
           "translate(" + this.x(d.value.date) + "," + this.y(d.value.pos) + ")"
       )
-      .attr("x", 3)
+      .attr("x", 10)
       .attr("dy", "0.35em")
       .style("font", "13px sans-serif")
       .text(function(d) {
