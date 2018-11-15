@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
 @Component({
   selector: "color-app",
   templateUrl: "color.component.html",
@@ -6,4 +7,13 @@ import { Component } from "@angular/core";
 })
 export class ColorComponent {
   title = "Color";
+
+  colorForm = new FormGroup({
+    color: new FormControl(""),
+    character: new FormControl("")
+  });
+
+  public onSubmit(): void {
+    console.log("change color", this.colorForm.value);
+  }
 }
