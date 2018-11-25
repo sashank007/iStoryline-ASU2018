@@ -19,6 +19,7 @@ export class MultiLineChartComponent implements OnInit {
   title = "Little Red Riding Hood";
   private _newColor: string;
   private _newCharacter: string;
+
   @Input()
   set hideCharacters(characters: any) {
     console.log("new value for hideCharacters in multi-series", characters);
@@ -145,6 +146,7 @@ export class MultiLineChartComponent implements OnInit {
     // }
     this.removeCharacter(character);
   }
+  
   private drawAxis(): void {
     // this.g
     //   .append("g")
@@ -181,8 +183,8 @@ export class MultiLineChartComponent implements OnInit {
       .append("path")
       .attr("class", "line")
       .attr("d", d => this.line(d.values))
-      // .style("stroke", d => this.z(d.id));
-      .style("stroke", "black")
+       .style("stroke", d => this.z(d.id))
+      //.style("stroke", "black")
       .attr("id", function(d) {
         return d.id;
       })
@@ -203,8 +205,9 @@ export class MultiLineChartComponent implements OnInit {
           "translate(" + this.x(d.value.date) + "," + this.y(d.value.pos) + ")"
       )
       .attr("x", 10)
-      .attr("dy", "0.35em")
-      .style("font", "13px sans-serif")
+      .attr("dy", "0.23em")
+      .style("font", "12px sans-serif")
+      .style("padding", "130px ")
       .text(function(d) {
         return d.id;
       })
