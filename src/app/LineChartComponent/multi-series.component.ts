@@ -19,11 +19,13 @@ export class MultiLineChartComponent implements OnInit {
   title = "Little Red Riding Hood";
   private _newColor: string;
   private _newCharacter: string;
+
   @Input()
   set hideCharacters(characters: any) {
     console.log("new value for hideCharacters in multi-series", characters);
     this.hideChars(characters);
   }
+   
   // @Input() newColor: string;
   @Input()
   set newColor(color: string) {
@@ -112,12 +114,15 @@ export class MultiLineChartComponent implements OnInit {
     if (characters) {
       for (let char of characters) {
         console.log("character ", char);
-        d3.select("#" + char).remove();
-        d3.select("#" + char).style("font", "20px sans-serif");
+       // console.log("display value == ", d3.select("#"+char).style.position);
+        d3.select("#" + char).style("display" , "none");
+        d3.select("#" + char).style("font", "30px sans-serif");
+      //  console.log("display value == ", d3.select("#"+char).style);
         // d3.select("#" + char).style("font", "0px san-serif");
       }
     }
   }
+  
   private drawAxis(): void {
     // this.g
     //   .append("g")
@@ -154,8 +159,8 @@ export class MultiLineChartComponent implements OnInit {
       .append("path")
       .attr("class", "line")
       .attr("d", d => this.line(d.values))
-      // .style("stroke", d => this.z(d.id));
-      .style("stroke", "black")
+       .style("stroke", d => this.z(d.id))
+      //.style("stroke", "black")
       .attr("id", function(d) {
         return d.id;
       })
@@ -176,8 +181,9 @@ export class MultiLineChartComponent implements OnInit {
           "translate(" + this.x(d.value.date) + "," + this.y(d.value.pos) + ")"
       )
       .attr("x", 10)
-      .attr("dy", "0.35em")
-      .style("font", "13px sans-serif")
+      .attr("dy", "0.23em")
+      .style("font", "12px sans-serif")
+      .style("padding", "130px ")
       .text(function(d) {
         return d.id;
       })

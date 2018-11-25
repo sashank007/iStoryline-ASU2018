@@ -68,6 +68,7 @@ import { graph } from "./Graph/graph";
 import { DraggableComponent } from "./DraggableComponent/draggable.component";
 import { MultiLineChartComponent } from "./LineChartComponent/multi-series.component";
 import { ColorComponent } from "./ColorComponent/color.component";
+import {GradientComponent} from "./GradientComponent/gradient.component";
 @NgModule({
   exports: [
     CdkTableModule,
@@ -134,7 +135,8 @@ export class DemoMaterialModule {}
     graph,
     DraggableComponent,
     MultiLineChartComponent,
-    ColorComponent
+    ColorComponent,
+    GradientComponent
   ],
   bootstrap: [AppComponent],
   providers: []
