@@ -27,7 +27,10 @@
 </header>
 <!-- <line-chart></line-chart> -->
 <div style="float:left">
-  <character-app (characterHide)="onCharacterHide($event)"></character-app
+  <character-app
+    (characterHide)="onCharacterHide($event)"
+    (characterShow)="onCharacterShow($event)"
+  ></character-app
   ><br />
   <text-component></text-component><br />
   <shapes-app></shapes-app><br />
@@ -37,6 +40,7 @@
 <div style="float:left">
   <line-chart
     [hideCharacters]="hideCharacters"
+    [showCharacters]="showCharacters"
     [newColor]="colorChange"
     [newCharacter]="newCharacter"
   ></line-chart>
