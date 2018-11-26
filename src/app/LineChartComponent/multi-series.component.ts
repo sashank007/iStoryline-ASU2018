@@ -25,17 +25,12 @@ export class MultiLineChartComponent implements OnInit {
     console.log("new value for hideCharacters in multi-series", characters);
     this.hideChars(characters);
   }
-<<<<<<< HEAD
-   
-  // @Input() newColor: string;
-=======
   @Input()
   set showCharacters(characters: any) {
     console.log("new value for showCharacters in multi-series", characters);
     this.showChars(characters);
   }
   // @Input() newColor: strin g;
->>>>>>> 7f4a5b2b6ffc898087d8006029c0d14c04b8fbe8
   @Input()
   set newColor(color: string) {
     this._newColor = color;
@@ -73,6 +68,7 @@ export class MultiLineChartComponent implements OnInit {
     // this.colorChange();
     this.drawPath();
     this.drawDashed();
+    this.colorMake();
   }
 
   private colorChange(color, character): void {
@@ -123,20 +119,6 @@ export class MultiLineChartComponent implements OnInit {
       })
     );
   }
-<<<<<<< HEAD
-  private hideChars(characters: any) {
-    // d3.select("#" + "Grandma").style("stroke", "red");
-    if (characters) {
-      for (let char of characters) {
-        console.log("character ", char);
-       // console.log("display value == ", d3.select("#"+char).style.position);
-        d3.select("#" + char).style("display" , "none");
-        d3.select("#" + char).style("font", "30px sans-serif");
-      //  console.log("display value == ", d3.select("#"+char).style);
-        // d3.select("#" + char).style("font", "0px san-serif");
-      }
-    }
-=======
   private removeCharacter(character) {
     console.log("called remove character", character);
     d3.select("#" + character).style("opacity", "0");
@@ -165,7 +147,6 @@ export class MultiLineChartComponent implements OnInit {
     //   }
     // }
     this.removeCharacter(character);
->>>>>>> 7f4a5b2b6ffc898087d8006029c0d14c04b8fbe8
   }
 
   private drawAxis(): void {
@@ -191,7 +172,12 @@ export class MultiLineChartComponent implements OnInit {
   // private colorChange(): void {
   //   d3.select("");
   // }
-
+  private colorMake(): void {
+    d3.select("#" + "Wolf").style("stroke", "red");
+    d3.select("#" + "Blanchette").style("stroke", "green");
+    d3.select("#" + "Grandma").style("stroke", "blue");
+    d3.select("#" + "Woodcutter").style("stroke", "green");
+  }
   private drawDashed(): void {
     d3.select("#" + "mother").style("stroke-dasharray", "3,3");
   }
