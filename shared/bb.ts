@@ -1,4 +1,4 @@
-export const LRRH = [
+export const BB = [
   {
     id: "Woodcutter",
     values: [
@@ -30,7 +30,7 @@ export const LRRH = [
     ]
   },
   {
-    id: "Wolf",
+    id: "Benjamin Button",
     values: [
       { date: new Date("2011-10-01"), pos: 120 },
       { date: new Date("2011-11-01"), pos: 120 },
