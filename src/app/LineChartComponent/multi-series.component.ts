@@ -25,8 +25,17 @@ export class MultiLineChartComponent implements OnInit {
     console.log("new value for hideCharacters in multi-series", characters);
     this.hideChars(characters);
   }
+<<<<<<< HEAD
    
   // @Input() newColor: string;
+=======
+  @Input()
+  set showCharacters(characters: any) {
+    console.log("new value for showCharacters in multi-series", characters);
+    this.showChars(characters);
+  }
+  // @Input() newColor: strin g;
+>>>>>>> 7f4a5b2b6ffc898087d8006029c0d14c04b8fbe8
   @Input()
   set newColor(color: string) {
     this._newColor = color;
@@ -37,6 +46,10 @@ export class MultiLineChartComponent implements OnInit {
     this._newCharacter = character;
     console.log("value for setted newCharacter in multi-series", character);
     this.colorChange(this._newColor, this._newCharacter);
+  }
+  showChars(character) {
+    console.log("called show character", character);
+    d3.select("#" + character).style("opacity", "1");
   }
   data: any;
   svg: any;
@@ -109,6 +122,7 @@ export class MultiLineChartComponent implements OnInit {
       })
     );
   }
+<<<<<<< HEAD
   private hideChars(characters: any) {
     // d3.select("#" + "Grandma").style("stroke", "red");
     if (characters) {
@@ -121,6 +135,36 @@ export class MultiLineChartComponent implements OnInit {
         // d3.select("#" + char).style("font", "0px san-serif");
       }
     }
+=======
+  private removeCharacter(character) {
+    console.log("called remove character", character);
+    d3.select("#" + character).style("opacity", "0");
+  }
+  // private showCharacters(character) {
+  //   console.log("called add character", character);
+  //   d3.select("#" + character).style("opacity", "1");
+  // }
+  private hideChars(character: any) {
+    // const allChars = ["Wolf", "Blanchette", "Grandma"];
+    // console.log("characters ", characters);
+    // for (let char in allChars) {
+    //   console.log("Char -->", allChars[char]);
+    //   console.log("incoming characters", characters);
+    //   if (characters.includes(allChars[char])) {
+    //     console.log("character must be removed", allChars[char]);
+    //     this.removeCharacter(String(allChars[char]));
+    //   }
+    // }
+
+    // for (let id in allIds) {
+    //   console.log("id ", allIds[id]);
+    //   if (id in characters) {
+    //     console.log("characters to be removed ", allIds[id]);
+    //     d3.select("#" + allIds[id]).remove();
+    //   }
+    // }
+    this.removeCharacter(character);
+>>>>>>> 7f4a5b2b6ffc898087d8006029c0d14c04b8fbe8
   }
   
   private drawAxis(): void {

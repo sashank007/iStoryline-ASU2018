@@ -18,6 +18,7 @@ export class NavDrawerComponent {
   @Input("newColor") newColor: string;
   @Input("newCharacter") newCharacter: string;
   @Input("hideCharacters") hideCharacters: any;
+  @Input("showCharacters") showCharacters: any;
   showSubTemplate() {
     console.log("clicked");
     console.log(this.showText);
@@ -39,5 +40,9 @@ export class NavDrawerComponent {
   onCharacterHide(characters: any) {
     console.log("onCharacterHide navdrawer", characters);
     this.hideCharacters = characters;
+  }
+  onCharacterShow(characters: any) {
+    console.log("onCharacterShow navdrawer", characters);
+    this.showCharacters = characters;
   }
 }

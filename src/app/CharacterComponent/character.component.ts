@@ -16,14 +16,25 @@ export class CharacterComponent implements OnInit {
     LRRH.map(v => this.characters.push(v.id));
     console.log(this.characters);
   }
-
+  //Hide the character when clicked , if unchecked remove hide.
   @Output() characterHide = new EventEmitter<any>();
+  @Output() characterShow = new EventEmitter<any>();
   private onSelect(event) {
+    let allChars = ["Wolf", "Grandma", "Blanchette"];
     this._characterHide = event;
     console.log(
       "event when selected in CharacterComponent",
       this._characterHide
     );
-    this.characterHide.emit(this._characterHide);
+    for (let char in allChars) {
+      console.log("char in allChars characterComponent", allChars[char]);
+      if (this._characterHide.includes(allChars[char])) {
+        console.log("emitting character hide", allChars[char]);
+        this.characterHide.emit(allChars[char]);
+      } else {
+        console.log("emitting character show ", allChars[char]);
+        this.characterShow.emit(allChars[char]);
+      }
+    }
   }
 }

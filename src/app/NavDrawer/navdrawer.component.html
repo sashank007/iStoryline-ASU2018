@@ -27,17 +27,21 @@
 </header>
 <!-- <line-chart></line-chart> -->
 <div style="float:left">
-  <character-app (characterHide)="onCharacterHide($event)"></character-app
+  <character-app
+    (characterHide)="onCharacterHide($event)"
+    (characterShow)="onCharacterShow($event)"
+  ></character-app
   ><br />
   <text-component></text-component><br />
   <shapes-app></shapes-app><br />
   <story-app></story-app> <br />
   <color-app (colorChange)="onColorChange($event)"></color-app><br />
-  <gradient-app></gradient-app><br />
+  <gradient-app></gradient-app>
 </div>
 <div style="float:left">
   <line-chart
     [hideCharacters]="hideCharacters"
+    [showCharacters]="showCharacters"
     [newColor]="colorChange"
     [newCharacter]="newCharacter"
   ></line-chart>
