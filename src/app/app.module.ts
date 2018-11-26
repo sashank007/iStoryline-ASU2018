@@ -68,7 +68,8 @@ import { graph } from "./Graph/graph";
 import { DraggableComponent } from "./DraggableComponent/draggable.component";
 import { MultiLineChartComponent } from "./LineChartComponent/multi-series.component";
 import { ColorComponent } from "./ColorComponent/color.component";
-import {GradientComponent} from "./GradientComponent/gradient.component";
+import { GradientComponent } from "./GradientComponent/gradient.component";
+import { HttpModule } from "@angular/http";
 @NgModule({
   exports: [
     CdkTableModule,
@@ -121,7 +122,8 @@ export class DemoMaterialModule {}
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    ColorPickerModule
+    ColorPickerModule,
+    HttpModule
   ],
   entryComponents: [AppComponent],
 

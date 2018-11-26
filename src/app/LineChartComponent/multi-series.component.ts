@@ -67,6 +67,7 @@ export class MultiLineChartComponent implements OnInit {
     this.drawAxis();
     // this.colorChange();
     this.drawPath();
+    this.drawDashed();
   }
 
   private colorChange(color, character): void {
@@ -146,7 +147,7 @@ export class MultiLineChartComponent implements OnInit {
     // }
     this.removeCharacter(character);
   }
-  
+
   private drawAxis(): void {
     // this.g
     //   .append("g")
@@ -171,6 +172,9 @@ export class MultiLineChartComponent implements OnInit {
   //   d3.select("");
   // }
 
+  private drawDashed(): void {
+    d3.select("#" + "mother").style("stroke-dasharray", "3,3");
+  }
   private drawPath(): void {
     let city = this.g
       .selectAll(".city")
@@ -183,7 +187,8 @@ export class MultiLineChartComponent implements OnInit {
       .append("path")
       .attr("class", "line")
       .attr("d", d => this.line(d.values))
-       .style("stroke", d => this.z(d.id))
+      .style("stroke", d => this.z(d.id))
+
       //.style("stroke", "black")
       .attr("id", function(d) {
         return d.id;

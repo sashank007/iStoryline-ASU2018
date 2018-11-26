@@ -4,5 +4,13 @@
     <mat-icon>library_books</mat-icon>
   </mat-expansion-panel-header>
 
+  <form [formGroup]="gifForm" (ngSubmit)="onSubmit()">
+    <label>Search Gif: </label><br />
+    <input type="text" formControlName="gif" /><br />
+    <button type="submit">Change</button>
+  </form>
+  <div *ngFor="let g of giphies">
+    <img width="100px" height="100px" src="{{g.images.original.url}}" /><br />
+  </div>
   <!-- <input [(colorPicker)]="color" [style.background]="color" /> -->
 </mat-expansion-panel>
