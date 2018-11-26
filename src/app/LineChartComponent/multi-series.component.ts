@@ -119,34 +119,18 @@ export class MultiLineChartComponent implements OnInit {
       })
     );
   }
-  private removeCharacter(character) {
-    console.log("called remove character", character);
-    d3.select("#" + character).style("opacity", "0");
-  }
-  // private showCharacters(character) {
-  //   console.log("called add character", character);
-  //   d3.select("#" + character).style("opacity", "1");
-  // }
-  private hideChars(character: any) {
-    // const allChars = ["Wolf", "Blanchette", "Grandma"];
-    // console.log("characters ", characters);
-    // for (let char in allChars) {
-    //   console.log("Char -->", allChars[char]);
-    //   console.log("incoming characters", characters);
-    //   if (characters.includes(allChars[char])) {
-    //     console.log("character must be removed", allChars[char]);
-    //     this.removeCharacter(String(allChars[char]));
-    //   }
-    // }
-
-    // for (let id in allIds) {
-    //   console.log("id ", allIds[id]);
-    //   if (id in characters) {
-    //     console.log("characters to be removed ", allIds[id]);
-    //     d3.select("#" + allIds[id]).remove();
-    //   }
-    // }
-    this.removeCharacter(character);
+  private hideChars(characters: any) {
+    // d3.select("#" + "Grandma").style("stroke", "red");
+    if (characters) {
+      for (let char of characters) {
+        console.log("character ", char);
+        // console.log("display value == ", d3.select("#"+char).style.position);
+        d3.select("#" + char).style("display", "none");
+        d3.select("#" + char).style("font", "30px sans-serif");
+        //  console.log("display value == ", d3.select("#"+char).style);
+        // d3.select("#" + char).style("font", "0px san-serif");
+      }
+    }
   }
 
   private drawAxis(): void {
