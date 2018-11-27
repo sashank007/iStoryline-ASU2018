@@ -175,12 +175,6 @@ export class MultiLineChartComponent implements OnInit {
   //   d3.select("");
   // }
   private colorMake(): void {
-<<<<<<< HEAD
-    d3.select("#" + "Wolf").style("stroke", "red");
-    d3.select("#" + "Blanchette").style("stroke", "orange");
-    d3.select("#" + "Grandma").style("stroke", "green");
-    d3.select("#" + "Woodcutter").style("stroke", "blue");
-=======
     d3.select("#" + "Wolf")
       .style("stroke-width", "3")
       .style("stroke", "indianred");
@@ -193,7 +187,6 @@ export class MultiLineChartComponent implements OnInit {
     d3.select("#" + "Woodcutter")
       .style("stroke-width", "3")
       .style("stroke", "steelblue");
->>>>>>> b4057664146f8166e782db1d1598cb9f59807c97
   }
   private drawDashed(): void {
     d3.select("#" + "mother").style("stroke-dasharray", "3,3");
