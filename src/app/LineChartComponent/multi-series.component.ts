@@ -8,6 +8,7 @@ import * as d3Array from "d3-array";
 import * as d3Axis from "d3-axis";
 
 import { LRRH } from "../../../shared";
+import { BB } from "../../../shared";
 
 @Component({
   selector: "line-chart",
@@ -16,10 +17,27 @@ import { LRRH } from "../../../shared";
   styleUrls: ["./multi-series.component.css"]
 })
 export class MultiLineChartComponent implements OnInit {
-  title = "Little Red Riding Hood";
+  // title = "Little Red Riding Hood";
   private _newColor: string;
   private _newCharacter: string;
-
+  private dataSet: any;
+  @Input()
+  set DataSet(data: any) {
+    this.dataSet = BB;
+    this.ngOnInit();
+    // if (data == "LRRH") {
+    //   this.dataSet = LRRH;
+    //   this.ngOnInit();
+    //   console.log("input data set LRRH");
+    // } else if (data == "BB") {
+    //   console.log("input data set BB");
+    //   this.dataSet = BB;
+    //   this.ngOnInit();
+    // } else {
+    //   console.log("input data set LRRH");
+    //   // this.dataSet = BB;
+    // }
+  }
   @Input()
   set hideCharacters(characters: any) {
     console.log("new value for hideCharacters in multi-series", characters);
@@ -60,7 +78,7 @@ export class MultiLineChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.data = LRRH.map(v => v.values.map(v => v.date))[0];
+    this.data = this.dataSet.map(v => v.values.map(v => v.date))[0];
     //.reduce((a, b) => a.concat(b), []);
 
     this.initChart();
@@ -101,12 +119,12 @@ export class MultiLineChartComponent implements OnInit {
     this.x.domain(d3Array.extent(this.data, (d: Date) => d));
 
     this.y.domain([
-      d3Array.min(LRRH, function(c) {
+      d3Array.min(this.dataSet, function(c) {
         return d3Array.min(c.values, function(d) {
           return d.pos - 20;
         });
       }),
-      d3Array.max(LRRH, function(c) {
+      d3Array.max(this.dataSet, function(c) {
         return d3Array.max(c.values, function(d) {
           return d.pos + 30;
         });
@@ -114,7 +132,7 @@ export class MultiLineChartComponent implements OnInit {
     ]);
 
     this.z.domain(
-      LRRH.map(function(c) {
+      this.dataSet.map(function(c) {
         return c.id;
       })
     );
@@ -157,10 +175,25 @@ export class MultiLineChartComponent implements OnInit {
   //   d3.select("");
   // }
   private colorMake(): void {
+<<<<<<< HEAD
     d3.select("#" + "Wolf").style("stroke", "red");
     d3.select("#" + "Blanchette").style("stroke", "orange");
     d3.select("#" + "Grandma").style("stroke", "green");
     d3.select("#" + "Woodcutter").style("stroke", "blue");
+=======
+    d3.select("#" + "Wolf")
+      .style("stroke-width", "3")
+      .style("stroke", "indianred");
+    d3.select("#" + "Blanchette")
+      .style("stroke-width", "3")
+      .style("stroke", "steelblue");
+    d3.select("#" + "Grandma")
+      .style("stroke-width", "3")
+      .style("stroke", "steelblue");
+    d3.select("#" + "Woodcutter")
+      .style("stroke-width", "3")
+      .style("stroke", "steelblue");
+>>>>>>> b4057664146f8166e782db1d1598cb9f59807c97
   }
   private drawDashed(): void {
     d3.select("#" + "mother").style("stroke-dasharray", "3,3");
@@ -168,7 +201,7 @@ export class MultiLineChartComponent implements OnInit {
   private drawPath(): void {
     let city = this.g
       .selectAll(".city")
-      .data(LRRH)
+      .data(this.dataSet)
       .enter()
       .append("g")
       .attr("class", "city");

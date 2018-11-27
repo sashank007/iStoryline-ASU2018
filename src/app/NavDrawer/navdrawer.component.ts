@@ -16,6 +16,7 @@ export class NavDrawerComponent {
   characterId: string = "";
   hero = "batman";
   @Input("newColor") newColor: string;
+  @Input("DataSet") DataSet: any;
   @Input("newCharacter") newCharacter: string;
   @Input("hideCharacters") hideCharacters: any;
   @Input("showCharacters") showCharacters: any;
@@ -25,6 +26,14 @@ export class NavDrawerComponent {
     this.showText = !this.showText;
   }
 
+  clickLRRH() {
+    console.log("click LRRH");
+    this.DataSet = "LRRH";
+  }
+  clickBB() {
+    console.log("click BB");
+    this.DataSet = "BB";
+  }
   onColorChange(colorChange: any) {
     console.log("inside parent component onColorChange", colorChange);
     this.colorChange = colorChange.color;

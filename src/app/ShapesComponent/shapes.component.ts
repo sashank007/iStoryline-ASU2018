@@ -6,4 +6,5 @@ import { Component } from "@angular/core";
 })
 export class ShapesComponent {
   title = "Shapes";
+
 }
