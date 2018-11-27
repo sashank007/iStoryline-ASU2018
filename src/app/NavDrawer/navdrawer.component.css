@@ -1,7 +1,7 @@
 .sidenav-container {
   width: 100%;
-  height: 100vh;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  height: 0px;
+ 
 }
 
 h2 {
@@ -10,13 +10,7 @@ h2 {
   font-family: "BebasNeueRegular";
   font-size: 30px;
 }
-.main-content {
-  display: flex;
-  height: 100%;
-  background-color: rgb(255, 255, 255);
-  align-items: center;
-  justify-content: center;
-}
+
 
 .sidenav {
   padding: 20px;
