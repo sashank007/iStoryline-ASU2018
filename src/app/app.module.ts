@@ -18,6 +18,7 @@ import { CdkTreeModule } from "@angular/cdk/tree";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AngularDraggableModule } from 'angular2-draggable';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -123,7 +124,8 @@ export class DemoMaterialModule {}
     MatNativeDateModule,
     ReactiveFormsModule,
     ColorPickerModule,
-    HttpModule
+    HttpModule,
+    AngularDraggableModule
   ],
   entryComponents: [AppComponent],
 
