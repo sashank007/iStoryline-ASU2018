@@ -41,6 +41,7 @@
 <div style="float:left;margin:30px;">
   <line-chart
     [hideCharacters]="hideCharacters"
+    [DataSet]="DataSet"
     [showCharacters]="showCharacters"
     [newColor]="colorChange"
     [newCharacter]="newCharacter"
@@ -65,21 +66,23 @@
 -->
 <!-- <graph></graph> -->
 <!-- <draggable-app></draggable-app> -->
-<mat-drawer #dataset class="sidenav" mode="side" position="end">
-  <button mat-raised-button color="secondary">
-    <mat-icon>description</mat-icon>
-    Data Set I</button
-  ><br />
-  <button mat-raised-button color="secondary">
-    <mat-icon>description</mat-icon>
-    Data Set II
-  </button>
-  <br />
-  <button mat-raised-button color="secondary">
-    <mat-icon>description</mat-icon>
-    Data Set III
-  </button>
-</mat-drawer>
+<div>
+  <mat-drawer #dataset class="sidenav" mode="side" position="end">
+    <button mat-raised-button color="secondary" (click)="clickLRRH()">
+      <mat-icon>description</mat-icon>
+      Data Set I</button
+    ><br />
+    <button mat-raised-button color="secondary" (click)="clickBB()">
+      <mat-icon>description</mat-icon>
+      Data Set II
+    </button>
+    <br />
+    <button mat-raised-button color="secondary">
+      <mat-icon>description</mat-icon>
+      Data Set III
+    </button>
+  </mat-drawer>
+</div>
 
 <!-- <sub-template [hidden]="!showText"></sub-template> -->
 

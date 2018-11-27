@@ -8,6 +8,7 @@ import * as d3Array from "d3-array";
 import * as d3Axis from "d3-axis";
 
 import { LRRH } from "../../../shared";
+import { BB } from "../../../shared";
 
 @Component({
   selector: "line-chart",
@@ -19,10 +20,23 @@ export class MultiLineChartComponent implements OnInit {
   // title = "Little Red Riding Hood";
   private _newColor: string;
   private _newCharacter: string;
-  private dataSet: any = LRRH;
+  private dataSet: any;
   @Input()
   set DataSet(data: any) {
-    this.dataSet = data;
+    this.dataSet = BB;
+    this.ngOnInit();
+    // if (data == "LRRH") {
+    //   this.dataSet = LRRH;
+    //   this.ngOnInit();
+    //   console.log("input data set LRRH");
+    // } else if (data == "BB") {
+    //   console.log("input data set BB");
+    //   this.dataSet = BB;
+    //   this.ngOnInit();
+    // } else {
+    //   console.log("input data set LRRH");
+    //   // this.dataSet = BB;
+    // }
   }
   @Input()
   set hideCharacters(characters: any) {
