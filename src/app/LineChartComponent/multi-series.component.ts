@@ -158,9 +158,9 @@ export class MultiLineChartComponent implements OnInit {
   // }
   private colorMake(): void {
     d3.select("#" + "Wolf").style("stroke", "red");
-    d3.select("#" + "Blanchette").style("stroke", "green");
-    d3.select("#" + "Grandma").style("stroke", "blue");
-    d3.select("#" + "Woodcutter").style("stroke", "green");
+    d3.select("#" + "Blanchette").style("stroke", "orange");
+    d3.select("#" + "Grandma").style("stroke", "green");
+    d3.select("#" + "Woodcutter").style("stroke", "blue");
   }
   private drawDashed(): void {
     d3.select("#" + "mother").style("stroke-dasharray", "3,3");
