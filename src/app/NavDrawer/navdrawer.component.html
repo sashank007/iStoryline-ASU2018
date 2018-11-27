@@ -48,8 +48,13 @@
   ></line-chart>
 </div>
 
-   <mat-drawer-container class="sidenav-container" autosize>
-    <!-- <mat-drawer #drawer class="sidenav" mode="side">
+<mat-drawer-container
+  class="sidenav-container"
+  autosize
+  style="margin-top:200px;"
+>
+  <!--
+    <mat-drawer #drawer class="sidenav" mode="side">
       <character-app></character-app><br />
       <text-component></text-component><br />
       <shapes-app></shapes-app><br />
@@ -63,15 +68,16 @@
         <line-chart></line-chart>
       </div>
       </div>
-      
-    </div> -->
-  </mat-drawer-container> 
+
+    </div>
+  -->
+</mat-drawer-container>
 <!-- <graph></graph> -->
 <draggable-app></draggable-app>
 <div>
   <mat-drawer #dataset class="sidenav" mode="side" position="end" autosize>
     <button mat-raised-button color="secondary" (click)="clickLRRH()">
-      <mat-icon>description</mat-icon> 
+      <mat-icon>description</mat-icon>
       Data Set I</button
     ><br />
     <button mat-raised-button color="secondary" (click)="clickBB()">

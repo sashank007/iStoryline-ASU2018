@@ -20,11 +20,11 @@ export class MultiLineChartComponent implements OnInit {
   // title = "Little Red Riding Hood";
   private _newColor: string;
   private _newCharacter: string;
-  private dataSet: any;
+  private dataSet: any = BB;
   @Input()
   set DataSet(data: any) {
-    this.dataSet = BB;
-    this.ngOnInit();
+    // this.dataSet = BB;
+    // this.ngOnInit();
     // if (data == "LRRH") {
     //   this.dataSet = LRRH;
     //   this.ngOnInit();
@@ -85,8 +85,9 @@ export class MultiLineChartComponent implements OnInit {
     this.drawAxis();
     // this.colorChange();
     this.drawPath();
+    this.opacity();
     this.drawDashed();
-    this.colorMake();
+    this.bbColor();
   }
 
   private colorChange(color, character): void {
@@ -175,21 +176,55 @@ export class MultiLineChartComponent implements OnInit {
   //   d3.select("");
   // }
   private colorMake(): void {
-    d3.select("#" + "Wolf")
-      .style("stroke-width", "3")
-      .style("stroke", "indianred");
-    d3.select("#" + "Blanchette")
-      .style("stroke-width", "3")
-      .style("stroke", "steelblue");
-    d3.select("#" + "Grandma")
-      .style("stroke-width", "3")
-      .style("stroke", "steelblue");
-    d3.select("#" + "Woodcutter")
-      .style("stroke-width", "3")
-      .style("stroke", "steelblue");
+    // d3.select("#" + "Wolf")
+    //   .style("stroke-width", "3")
+    //   .style("stroke", "indianred");
+    // d3.select("#" + "Blanchette")
+    //   .style("stroke-width", "3")
+    //   .style("stroke", "steelblue");
+    // d3.select("#" + "Grandma")
+    //   .style("stroke-width", "3")
+    //   .style("stroke", "steelblue");
+    // d3.select("#" + "Woodcutter")
+    //   .style("stroke-width", "3")
+    //   .style("stroke", "steelblue");
+    d3.select("#" + "Mother").style("stroke-width", "3");
+    // .style("stroke", "black");
+    d3.select("#" + "Benjamin").style("stroke-width", "3");
+    // .style("stroke", "black");
   }
   private drawDashed(): void {
-    d3.select("#" + "mother").style("stroke-dasharray", "3,3");
+    d3.select("#" + "Mother").style("stroke-dasharray", "3,3");
+    d3.select("#" + "Elizabeth").style("stroke-dasharray", "3,3");
+  }
+  private opacity(): void {
+    const characters = [
+      "Benjamin",
+      "Queenie",
+      "Daisy",
+      "QueeniesHusband",
+      "Mother",
+      "Father",
+      "Elizabeth"
+    ];
+    for (var i = 0; i < characters.length; i++) {
+      console.log("opacity", String(1 - 0.1 * i));
+
+      d3.select("#" + characters[i]).style(
+        "stroke",
+        "rgba(100 , 100," + String(255 - 10 * i) + ")"
+      );
+    }
+  }
+  private bbColor(): void {
+    d3.select("#" + "Mother").style("stroke-width", "3");
+    // .style("stroke", "darkblue");
+    d3.select("#" + "Father").style("stroke-width", "3");
+    // .style("stroke", "darkblue");
+    d3.select("#" + "Elizabeth").style("stroke-width", "3");
+    // .style("stroke", "darkblue");
+    d3.select("#" + "Benjamin").style("stroke-width", "8");
+    // .style("stroke", "black");
   }
   private drawPath(): void {
     let city = this.g
@@ -203,7 +238,7 @@ export class MultiLineChartComponent implements OnInit {
       .append("path")
       .attr("class", "line")
       .attr("d", d => this.line(d.values))
-      .style("stroke", d => this.z(d.id))
+      .style("stroke", "black")
 
       //.style("stroke", "black")
       .attr("id", function(d) {
@@ -227,7 +262,7 @@ export class MultiLineChartComponent implements OnInit {
       )
       .attr("x", 10)
       .attr("dy", "0.23em")
-      .style("font", "12px sans-serif")
+      .style("font", "12px fantasy")
       .style("padding", "130px ")
       .text(function(d) {
         return d.id;
