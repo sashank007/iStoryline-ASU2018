@@ -21,7 +21,8 @@ export class MultiLineChartComponent implements OnInit {
   // title = "Little Red Riding Hood";
   private _newColor: string;
   private _newCharacter: string;
-  private dataSet: any = BB;
+  private showFlashback: boolean = true;
+  private dataSet: any = BBReal;
   // TODO: Fix toggle for datasets
   @Input()
   set DataSet(data: any) {
@@ -39,7 +40,7 @@ export class MultiLineChartComponent implements OnInit {
       this.ngOnInit();
     } else {
       console.log("input data set LRRH");
-      this.dataSet = BB;
+      this.dataSet = BBReal;
     }
   }
   @Input()
@@ -82,6 +83,18 @@ export class MultiLineChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.initComp();
+  }
+  //TODO: Make flashback better transition
+  //make on hover , rotate flashback , show tooltip
+  public flashbackBB(): void {
+    this.svg = d3.select("#svgChart");
+    this.svg.selectAll("*").remove();
+    this.dataSet = BB;
+    this.ngOnInit();
+  }
+  public initComp(): void {
+    this.showFlashback = true;
     this.data = this.dataSet.map(v => v.values.map(v => v.date))[0];
     //.reduce((a, b) => a.concat(b), []);
 
@@ -91,9 +104,36 @@ export class MultiLineChartComponent implements OnInit {
     this.drawPath();
     this.opacity();
     this.drawDashed();
+    if (this.dataSet == BBReal) this.showFlashback = false;
     this.bbColor();
   }
 
+  private appendFlashback(): void {
+    this.showFlashback = false;
+
+    // d3.selectAll(".city")
+    //   .append("svg:image")
+    //   .attr("id", "flashback")
+    //   .attr("x", 225)
+    //   .attr("y", 250)
+    //   .attr("width", 150)
+    //   .attr("height", 150)
+    //   .attr("xlink:href", "../../assets/spiralTrans.png")
+    //   .on("click", function(d) {
+    //     console.log("clicked flashback");
+    //     this.svg = d3.select("#svgChart");
+    //     this.svg.selectAll("*").remove();
+    //     d3.event.stopPropagation();
+    //   })
+    //   .on("mouseover", function(d) {
+    //     console.log("hovered flashback");
+    //   })
+    //   .on("mouseout", function(d) {
+    //     console.log("out of flashback");
+    //   });
+  }
+
+  private renderGraph() {}
   private colorChange(color, character): void {
     d3.select("#" + character).style("stroke", color);
   }
@@ -234,6 +274,7 @@ export class MultiLineChartComponent implements OnInit {
     d3.select("#" + "Benjamin").style("stroke-width", "8");
     // .style("stroke", "black");
   }
+  // TODO: Change city to lines
   private drawPath(): void {
     let city = this.g
       .selectAll(".city")
@@ -257,7 +298,7 @@ export class MultiLineChartComponent implements OnInit {
         d3.select("#" + d.id).style("stroke", "blue");
         d3.event.stopPropagation();
       });
-
+    city.append("text", "text");
     city
       .append("text")
       .datum(function(d) {
