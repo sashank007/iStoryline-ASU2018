@@ -14,6 +14,7 @@ export class NavDrawerComponent {
   showText: boolean = false;
   colorChange: string = "";
   characterId: string = "";
+
   hero = "batman";
   @Input("newColor") newColor: string;
   @Input("DataSet") DataSet: any;
@@ -45,6 +46,25 @@ export class NavDrawerComponent {
       this.colorChange,
       this.characterId
     );
+  }
+  createGif(gif: any) {
+    // TODO: Create new dom element when clicked
+    //TODO: Dom element must be ngDraggable
+    console.log("gif", gif);
+    const gifDom = document.createElement("img");
+    gifDom.setAttribute("src", gif);
+    gifDom.setAttribute("width", "100px");
+    gifDom.setAttribute("height", "100px");
+    const parent = document.getElementById("gifs");
+    const plainField = document.getElementById("gif-container");
+    plainField.appendChild(gifDom);
+    // const newField = plainField.cloneNode(true);
+    // const newField = plainField.firstElementChild.cloneNode(true);
+    // parent.appendChild(newField);
+    // // parent.className = "ng-draggable";
+    // // parent.appendChild(newField);
+    // newField.appendChild(gifDom);
+    // console.log("new field", newField);
   }
   onCharacterHide(characters: any) {
     console.log("onCharacterHide navdrawer", characters);

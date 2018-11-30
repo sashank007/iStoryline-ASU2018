@@ -9,6 +9,7 @@ import * as d3Axis from "d3-axis";
 
 import { LRRH } from "../../../shared";
 import { BB } from "../../../shared";
+import { BBReal } from "../../../shared";
 
 @Component({
   selector: "line-chart",
@@ -21,22 +22,25 @@ export class MultiLineChartComponent implements OnInit {
   private _newColor: string;
   private _newCharacter: string;
   private dataSet: any = BB;
+  // TODO: Fix toggle for datasets
   @Input()
   set DataSet(data: any) {
-    // this.dataSet = BB;
-    // this.ngOnInit();
-    // if (data == "LRRH") {
-    //   this.dataSet = LRRH;
-    //   this.ngOnInit();
-    //   console.log("input data set LRRH");
-    // } else if (data == "BB") {
-    //   console.log("input data set BB");
-    //   this.dataSet = BB;
-    //   this.ngOnInit();
-    // } else {
-    //   console.log("input data set LRRH");
-    //   // this.dataSet = BB;
-    // }
+    // d3.select("#svgChart").remove();
+    // d3.selectAll("svg > *").remove();
+    this.svg = d3.select("#svgChart");
+    this.svg.selectAll("*").remove();
+    if (data == "LRRH") {
+      this.dataSet = LRRH;
+      this.ngOnInit();
+      console.log("input data set LRRH");
+    } else if (data == "BB") {
+      console.log("input data set BB");
+      this.dataSet = BB;
+      this.ngOnInit();
+    } else {
+      console.log("input data set LRRH");
+      this.dataSet = BB;
+    }
   }
   @Input()
   set hideCharacters(characters: any) {
@@ -212,7 +216,11 @@ export class MultiLineChartComponent implements OnInit {
 
       d3.select("#" + characters[i]).style(
         "stroke",
-        "rgba(100 , 100," + String(255 - 10 * i) + ")"
+        "rgba(100 , 100," +
+          String(255 - 10 * i) +
+          "," +
+          String(1 - 0.15 * i) +
+          ")"
       );
     }
   }

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { Http, Response } from "@angular/http";
 @Component({
@@ -13,11 +13,16 @@ export class StoryComponent {
   constructor(http: Http) {
     this.http = http;
   }
+  @Output() gifElement = new EventEmitter<any>();
 
   title = "Images/GIFs";
   gifForm = new FormGroup({
     gif: new FormControl("")
   });
+  private createGif(src: any): void {
+    console.log("create gif in the graph component", src);
+    this.gifElement.emit(src);
+  }
   private onSubmit(): void {
     console.log("gif", this.gifForm.value.gif);
     var searchTerm = this.gifForm.value.gif;

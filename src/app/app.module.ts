@@ -1,16 +1,3 @@
-// import { BrowserModule } from "@angular/platform-browser";
-// import { NgModule } from "@angular/core";
-
-// import { AppComponent } from "./app.component";
-
-// import { NavDrawerComponent } from "./NavDrawer/navdrawer.component";
-// @NgModule({
-//   declarations: [AppComponent, NavDrawerComponent],
-//   imports: [BrowserModule],
-//   providers: [],
-//   bootstrap: [AppComponent]
-// })
-// export class AppModule {}
 import "../polyfills";
 import { ColorPickerModule } from "ngx-color-picker";
 import { CdkTableModule } from "@angular/cdk/table";
@@ -18,18 +5,13 @@ import { CdkTreeModule } from "@angular/cdk/tree";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AngularDraggableModule } from 'angular2-draggable';
+import { AngularDraggableModule } from "angular2-draggable";
 import {
-  MatAutocompleteModule,
   MatBadgeModule,
-  MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
   MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
   MatGridListModule,
@@ -38,22 +20,11 @@ import {
   MatListModule,
   MatMenuModule,
   MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
   MatRadioModule,
   MatRippleModule,
   MatSelectModule,
   MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatStepperModule,
-  MatTableModule,
-  MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule,
   MatTreeModule
 } from "@angular/material";
 import { BrowserModule } from "@angular/platform-browser";
@@ -75,17 +46,11 @@ import { HttpModule } from "@angular/http";
   exports: [
     CdkTableModule,
     CdkTreeModule,
-    MatAutocompleteModule,
     MatBadgeModule,
-    MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
     MatGridListModule,
@@ -93,22 +58,11 @@ import { HttpModule } from "@angular/http";
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
     MatRadioModule,
     MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
     MatTreeModule
   ]
 })
