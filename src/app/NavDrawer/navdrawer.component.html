@@ -11,15 +11,46 @@
   </span>
 </header>
 
-<div style="float:left;margin:30px">
+<div style="float:left;">
   <character-app (characterHide)="onCharacterHide($event)" (characterShow)="onCharacterShow($event)"></character-app><br />
   <text-component></text-component><br />
-  <shapes-app></shapes-app><br />
+  <shapes-app (svgValue)="onSvgClicked($event)"></shapes-app><br />
   <story-app (gifElement)="createGif($event)"></story-app> <br />
   <color-app (colorChange)="onColorChange($event)"></color-app><br />
   <gradient-app></gradient-app>
 </div>
-<div id="graphContainer" style="float:left;margin:30px;">
+<div id="graphContainer" style="float:left;">
+  <!-- TODO: Increase size of shapes -->
+  <div id="shapes" style="position:absolute;">
+    <svg *ngIf="showTriangle" ngDraggable #svgVal id="circle" width="100" height="100">
+      <path d=" M 10 25
+                          L 10 75
+                          L 60 75
+                          L 10 25"
+        stroke="red" stroke-width="2" fill="red" opacity="0.3" />
+    </svg>
+    <svg *ngIf="showSquare" ngDraggable id="square" width="100" height="100">
+      <path d=" M 10 25
+                          L 10 75
+                          L 60 75
+                          L 60 25
+                          L 10 25"
+        stroke="blue" opacity="0.3" stroke-width="2" #svgVal id="rectangle" fill="blue" />
+    </svg>
+    <br />
+    <svg *ngIf="showRectangle" ngDraggable width="200" height="200">
+      <path d=" M 10 25
+                          L 10 75
+                          L 80 75
+                          L 80 25
+                          L 10 25"
+        stroke="blue" stroke-width="2" fill="blue" opacity="0.3" />
+    </svg>
+
+    <svg *ngIf="showCircle" ngDraggable width="100" height="100" id="circle">
+      <circle cx="40" cy="50" r="40" style="fill:indianred" stroke="indianred" stroke-width="2" opacity="0.3"></circle>
+    </svg>
+  </div>
   <div id="plain-field" width="100px" height="100px"></div>
   <line-chart [hideCharacters]="hideCharacters" [DataSet]="DataSet" [showCharacters]="showCharacters" [newColor]="colorChange"
     [newCharacter]="newCharacter"></line-chart>
@@ -33,7 +64,8 @@
 
   </div>
 </div>
-<draggable-app></draggable-app>
+
+<!-- <draggable-app></draggable-app> -->
 <!-- TODO: Fix the button alignment to be above nav drawer -->
 <div>
   <mat-drawer #dataset class="sidenav" mode="side" position="end" autosize>
@@ -46,10 +78,6 @@
       The Curious Case <br /> of Benjamin Button
     </button>
     <br />
-    <button mat-raised-button color="secondary">
-      <mat-icon>description</mat-icon>
-      Data Set III
-    </button>
   </mat-drawer>
 </div>
 

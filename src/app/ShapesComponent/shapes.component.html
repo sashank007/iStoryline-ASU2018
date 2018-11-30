@@ -19,51 +19,30 @@
     </canvas>
   -->
   <!-- triangle -->
-  <svg width="100" height="100">
-    <path
-      d=" M 10 25
+  <div #svgVal>
+    <svg padding="5px" (click)="clickSvg($event)" id="triangle" width="100" height="100">
+      <path d=" M 10 25
                 L 10 75
                 L 60 75
-                L 10 25"
-      stroke="red"
-      stroke-width="2"
-      fill="none"
-    />
-  </svg>
-  <svg width="100" height="100">
-    <path
-      d=" M 10 25
-                L 10 75
-                L 60 75
-                L 60 25
-                L 10 25"
-      stroke="red"
-      stroke-width="2"
-      fill="none"
-    />
-  </svg>
-  <br />
-  <svg width="100" height="100">
-    <path
-      d=" M 10 25
+                L 10 25" stroke="red" id="triangle"
+        stroke-width="2" fill="red" opacity="0.5" />
+    </svg>
+    <svg (click)="clickSvg($event)" id="square" width="100" height="100">
+      <path d=" M 10 25 L 10 75 L 60 75 L 60 25 L 10 25" stroke="blue" opacity="0.5" id="square" stroke-width="2" fill="blue" />
+    </svg>
+    <br />
+    <svg (click)="clickSvg($event)" width="100" height="100" id="rectangle">
+      <path d=" M 10 25
                 L 10 75
                 L 80 75
                 L 80 25
                 L 10 25"
-      stroke="red"
-      stroke-width="2"
-      fill="none"
-    />
-  </svg>
+        stroke="blue" stroke-width="2" id="rectangle" fill="blue" opacity="0.5" />
+    </svg>
 
-  <svg width="100" height="100">
-    <circle
-      cx="40"
-      cy="50"
-      r="30"
-      style="fill:none"
-      stroke="red"
-      stroke-width="2"
-    ></circle>
-  </svg>
+    <svg (click)="clickSvg($event)" id="circle" width="100" height="100">
+      <circle cx="40" cy="50" r="30" style="fill:indianred" stroke="indianred" id="circle" stroke-width="2" opacity="0.3"></circle>
+    </svg>
+  </div>
+
 </mat-expansion-panel>

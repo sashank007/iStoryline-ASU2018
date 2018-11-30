@@ -21,6 +21,10 @@ export class NavDrawerComponent {
   @Input("newCharacter") newCharacter: string;
   @Input("hideCharacters") hideCharacters: any;
   @Input("showCharacters") showCharacters: any;
+  showTriangle: boolean = false;
+  showRectangle: boolean = false;
+  showSquare: boolean = false;
+  showCircle: boolean = false;
   showSubTemplate() {
     console.log("clicked");
     console.log(this.showText);
@@ -46,6 +50,32 @@ export class NavDrawerComponent {
       this.colorChange,
       this.characterId
     );
+  }
+  onSvgClicked(svg: any) {
+    console.log("svg  clicked", svg);
+    if (svg == "triangle") {
+      console.log("show   triangle");
+      this.showTriangle = !this.showTriangle;
+    } else if (svg == "rectangle") {
+      console.log("show rectangle");
+
+      this.showRectangle = !this.showRectangle;
+    } else if (svg == "square") {
+      console.log("show square");
+
+      this.showSquare = !this.showSquare;
+    } else if (svg == "circle") {
+      console.log("show circle");
+
+      this.showCircle = !this.showCircle;
+    }
+    // const gifDom = document.createElement("img");
+    // gifDom.setAttribute("src", gif);
+    // gifDom.setAttribute("width", "100px");
+    // gifDom.setAttribute("height", "100px");
+    // const parent = document.getElementById("gifs");
+    // const plainField = document.getElementById("gif-container");
+    // plainField.appendChild(gifDom);
   }
   createGif(gif: any) {
     // TODO: Create new dom element when clicked

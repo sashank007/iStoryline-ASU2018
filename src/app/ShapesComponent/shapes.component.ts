@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 @Component({
   selector: "shapes-app",
   templateUrl: "shapes.component.html",
@@ -6,5 +6,12 @@ import { Component } from "@angular/core";
 })
 export class ShapesComponent {
   title = "Shapes";
+  @Output() svgValue = new EventEmitter<any>();
+  clickSvg(event): void {
+    var target = event.target;
 
+    console.log("id ", target.id);
+    // console.log("svgVal", svgVal);
+    this.svgValue.emit(target.id);
+  }
 }
