@@ -9,7 +9,7 @@
 }
 
 .flashback {
-  animation: RotateAnimation 0.4s infinite;
+  animation: RotateAnimation 0.2s infinite;
 }
 
 @keyframes RotateAnimation {
