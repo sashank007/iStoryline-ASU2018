@@ -28,6 +28,7 @@ export class MultiLineChartComponent implements OnInit {
   private __dataKey: any = "BB";
   private hideGoBackButton: boolean = false;
   // TODO: Fix toggle for datasets
+  @
   @Input()
   set DataSet(data: any) {
     // d3.select("#svgChart").remove();
@@ -69,6 +70,7 @@ export class MultiLineChartComponent implements OnInit {
   @Input()
   set newGradient1(gradient1: string) {
     this._newGradient1 = gradient1;
+   // this._newGradient2 = gradient2;
     console.log("value for setted new gradient", gradient1);
     console.log("----value for setted character", this._newCharacter);
     this.colorChange(this._newColor, this._newCharacter);
@@ -78,7 +80,7 @@ export class MultiLineChartComponent implements OnInit {
   set newColor(color: string) {
     this._newColor = color;
     console.log("value for setted newColor", color);
-    console.log("----value for setted character", this._newCharacter);
+   // console.log("----value for setted character", this._newCharacter);
     this.colorChange(this._newColor, this._newCharacter);
   }
   @Input()

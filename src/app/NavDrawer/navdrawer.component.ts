@@ -15,7 +15,7 @@ export class NavDrawerComponent {
   showText: boolean = false;
   colorChange: string = "";
   gradientChange1: string = "";
-  gradientChange2: string = "";
+ gradientChange2: string = "";
   characterId: string = "";
 
   hero = "batman";
@@ -64,8 +64,9 @@ export class NavDrawerComponent {
   }
   onGradientChange(gradientChange: any) {
     console.log("inside parent component onGradientChange", gradientChange);
-    this.gradientChange1 = gradientChange.color1;
-    this.gradientChange2 = gradientChange.color2;
+    this.gradientChange1 = gradientChange.gradient1;
+    this.gradientChange2=gradientChange.gradient2;
+  //  this.gradientChange2 = gradientChange.color2;
     this.characterId = gradientChange.character;
     this.newGradient1 = this.gradientChange1;
     this.newGradient2 = this.gradientChange2;
@@ -73,7 +74,7 @@ export class NavDrawerComponent {
     console.log(
       "current gradients in parent for id",
       this.gradientChange1,
-      this.gradientChange2,
+     this.gradientChange2,
       this.characterId
     );
   }
