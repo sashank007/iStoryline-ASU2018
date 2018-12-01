@@ -10,14 +10,14 @@ export class GradientComponent {
     title = "Gradient";
    
     @Output() gradientChange = new EventEmitter<FormGroup>();
-    colorForm = new FormGroup({
-      color1: new FormControl(""),
-      color2: new FormControl(""),
+    colorGradientForm = new FormGroup({
+      gradient1: new FormControl(""),
+      gradient2: new FormControl(""),
       character: new FormControl("")
     });
   
     public onSubmit(): void {
-      console.log("change color", this.colorForm.value);
-      this.gradientChange.emit(this.colorForm.value);
+      console.log("change color", this.colorGradientForm.value);
+      this.gradientChange.emit(this.colorGradientForm.value);
     }
 }

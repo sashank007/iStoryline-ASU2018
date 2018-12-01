@@ -26,6 +26,7 @@ export class MultiLineChartComponent implements OnInit {
   private showFlashback: boolean = true;
   private dataSet: any = BBReal;
   // TODO: Fix toggle for datasets
+  @
   @Input()
   set DataSet(data: any) {
     // d3.select("#svgChart").remove();
@@ -60,15 +61,20 @@ export class MultiLineChartComponent implements OnInit {
     this._newGradient2 = gradient2;
     console.log("value for setted new gradient", gradient2);
     console.log("----value for setted character", this._newCharacter);
-    this.colorChange(this._newColor, this._newCharacter);
+    //this.addGradient(this._newColor, this._newCharacter);
+    this.addGradient(this._newGradient1,this._newGradient2 , this._newCharacter)
 
   }
   @Input()
-  set newGradient1(gradient1:string){
+  set newGradient1(gradient1:string ){
     this._newGradient1 = gradient1;
+   // this._newGradient2 = gradient2;
     console.log("value for setted new gradient", gradient1);
     console.log("----value for setted character", this._newCharacter);
-    this.colorChange(this._newColor, this._newCharacter);
+    this.addGradient(this._newGradient1,this._newGradient2 , this._newCharacter)
+
+   // this.addGradient(this._newGradient1,this._newGradient2,this._newCharacter);
+   // this.colorChange(this._newColor, this._newCharacter);
 
   }
   // @Input() newColor: strin g;
@@ -76,7 +82,7 @@ export class MultiLineChartComponent implements OnInit {
   set newColor(color: string) {
     this._newColor = color;
     console.log("value for setted newColor", color);
-    console.log("----value for setted character", this._newCharacter);
+   // console.log("----value for setted character", this._newCharacter);
     this.colorChange(this._newColor, this._newCharacter);
 
   }
@@ -157,6 +163,71 @@ export class MultiLineChartComponent implements OnInit {
   private renderGraph() {}
   private colorChange(color, character): void {
     d3.select("#" + character).style("stroke", color);
+  }
+  
+  private addGradient(gradient1,gradient2,character):void{
+    // if(gradient1!=""&& gradient1!=null && gradient2!=""&&gradient2!=null){
+
+          
+    var svg =   d3.select("#svgChart");
+    var defs = svg.append("defs");
+
+    svg.append("linearGradient")				
+    .attr("id", "area-gradient")			
+    .attr("gradientUnits", "userSpaceOnUse")	
+   	
+.selectAll("stop")						
+    .data([								
+        {offset: "0%", color: "red"},		
+        {offset: "30%", color: "red"},	
+        {offset: "45%", color: "black"},		
+        {offset: "55%", color: "black"},		
+        {offset: "60%", color: "lawngreen"},	
+        {offset: "100%", color: "lawngreen"}	
+    ])						
+.enter().append("stop")			
+    .attr("offset", function(d) { return d.offset; })	
+    .attr("stop-color", function(d) { return d.color; });
+
+
+
+    var gradient = defs.append("linearGradient")
+    .attr("id", "svgGradient")
+    .attr("x1", "0%")
+    .attr("x2", "100%")
+    .attr("y1", "0%")
+    .attr("y2", "100%");
+
+    gradient.append("stop")
+    .attr('class', 'start')
+    .attr("offset", "0%")
+    .attr("stop-color", "red")
+    .attr("stop-opacity", 1);
+
+    gradient.append("stop")
+    .attr('class', 'end')
+    .attr("offset", "100%")
+    .attr("stop-color", "blue")
+    .attr("stop-opacity", 1);
+    console.log("gradient change");
+
+    d3.select("#"+character).style("stroke" , "url(#line-gradient)");
+
+
+
+
+
+  //var colorInterpolator = d3.interpolateRgbBasis([gradient1, gradient2]);
+// var colorHandler = (d, i, nodes) => {
+//   let color = d3.color(colorInterpolator(d.t));
+//   color.opacity = i/nodes.length > 1-complete ? 1 : 0;
+//   return color; 
+// };
+      console.log("====called add gradient with values : "+gradient1+" ,"+gradient2);
+    //d3.select("#" + character).style("stroke", gradient1);
+    console.log("called add gradient with values : "+gradient1+" "+gradient2);
+    // }
+    
   }
   private initChart(): void {
     this.svg = d3.select("#svgChart");

@@ -17,7 +17,7 @@
   <shapes-app (svgValue)="onSvgClicked($event)"></shapes-app><br />
   <story-app (gifElement)="createGif($event)"></story-app> <br />
   <color-app (colorChange)="onColorChange($event)"></color-app><br />
-  <gradient-app></gradient-app>
+  <gradient-app  (gradientChange)="onGradientChange($event)"></gradient-app>
 </div>
 <div id="graphContainer" style="float:left;">
   <!-- TODO: Increase size of shapes -->
@@ -52,7 +52,7 @@
     </svg>
   </div>
   <div id="plain-field" width="100px" height="100px"></div>
-  <line-chart [hideCharacters]="hideCharacters" [DataSet]="DataSet" [showCharacters]="showCharacters" [newColor]="colorChange"
+  <line-chart [hideCharacters]="hideCharacters" [newGradient1]="gradientChange1" [newGradient2] = "gradientChange2"   [DataSet]="DataSet" [showCharacters]="showCharacters" [newColor]="colorChange"
     [newCharacter]="newCharacter"></line-chart>
 </div>
 
