@@ -13,10 +13,14 @@ export class NavDrawerComponent {
   subTemplates = ["character", "text", "shapes", "story"];
   showText: boolean = false;
   colorChange: string = "";
+  gradientChange1: string = "";
+  gradientChange2: string = "";
   characterId: string = "";
 
   hero = "batman";
   @Input("newColor") newColor: string;
+  @Input("newGradient1") newGradient1: string;
+  @Input("newGradient2") newGradient2: string;
   @Input("DataSet") DataSet: any;
   @Input("newCharacter") newCharacter: string;
   @Input("hideCharacters") hideCharacters: any;
@@ -38,6 +42,21 @@ export class NavDrawerComponent {
   clickBB() {
     console.log("click BB");
     this.DataSet = "BB";
+  }
+  onGradientChange(gradientChange : any){
+    console.log("inside parent component onGradientChange", gradientChange);
+    this.gradientChange1 = gradientChange.color1;
+    this.gradientChange2 = gradientChange.color2;
+    this.characterId = gradientChange.character;
+    this.newGradient1 = this.gradientChange1;
+    this.newGradient2 = this.gradientChange2;
+    this.newCharacter = this.characterId;
+    console.log(
+      "current gradients in parent for id",
+      this.gradientChange1,
+      this.gradientChange2,
+      this.characterId
+    );
   }
   onColorChange(colorChange: any) {
     console.log("inside parent component onColorChange", colorChange);

@@ -20,6 +20,8 @@ import { BBReal } from "../../../shared";
 export class MultiLineChartComponent implements OnInit {
   // title = "Little Red Riding Hood";
   private _newColor: string;
+  private _newGradient1: string;
+  private _newGradient2:string;
   private _newCharacter: string;
   private showFlashback: boolean = true;
   private dataSet: any = BBReal;
@@ -53,11 +55,30 @@ export class MultiLineChartComponent implements OnInit {
     console.log("new value for showCharacters in multi-series", characters);
     this.showChars(characters);
   }
+  @Input()
+  set newGradient2(gradient2:string){
+    this._newGradient2 = gradient2;
+    console.log("value for setted new gradient", gradient2);
+    console.log("----value for setted character", this._newCharacter);
+    this.colorChange(this._newColor, this._newCharacter);
+
+  }
+  @Input()
+  set newGradient1(gradient1:string){
+    this._newGradient1 = gradient1;
+    console.log("value for setted new gradient", gradient1);
+    console.log("----value for setted character", this._newCharacter);
+    this.colorChange(this._newColor, this._newCharacter);
+
+  }
   // @Input() newColor: strin g;
   @Input()
   set newColor(color: string) {
     this._newColor = color;
     console.log("value for setted newColor", color);
+    console.log("----value for setted character", this._newCharacter);
+    this.colorChange(this._newColor, this._newCharacter);
+
   }
   @Input()
   set newCharacter(character: string) {
