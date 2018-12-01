@@ -1,3 +1,16 @@
+Instructions to run the project :
+
+1. Please make sure you have npm or yarn installed.
+2. Navigate to folder iStoryline-ASU2018 and run command "npm install" or "yarn"
+3. Once all libraries installed , please ng serve for a dev server. Navigate to http://localhost:4200/.
+4. You will be able to see the app running.
+5. For further queries please contact : Sashank Tungaturthi: 480-2436602 or Radhika Bhati: 4802490807
+
+P.S : The two datasets used are under the folder "DataSets"
+Both the tsv files and the json files.
+
+Cheers!
+
 # IStorylineASU2018
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.

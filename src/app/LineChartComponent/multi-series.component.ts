@@ -21,10 +21,12 @@ export class MultiLineChartComponent implements OnInit {
   // title = "Little Red Riding Hood";
   private _newColor: string;
   private _newGradient1: string;
-  private _newGradient2:string;
+  private _newGradient2: string;
   private _newCharacter: string;
   private showFlashback: boolean = true;
-  private dataSet: any = BBReal;
+  private dataSet: any = LRRH;
+  private __dataKey: any = "BB";
+  private hideGoBackButton: boolean = false;
   // TODO: Fix toggle for datasets
   @Input()
   set DataSet(data: any) {
@@ -32,17 +34,19 @@ export class MultiLineChartComponent implements OnInit {
     // d3.selectAll("svg > *").remove();
     this.svg = d3.select("#svgChart");
     this.svg.selectAll("*").remove();
+    this.__dataKey = data;
     if (data == "LRRH") {
       this.dataSet = LRRH;
+      // this.LRRHColors();
       this.ngOnInit();
       console.log("input data set LRRH");
-    } else if (data == "BB") {
+    } else if (data == "BBReal") {
       console.log("input data set BB");
-      this.dataSet = BB;
+      this.dataSet = BBReal;
       this.ngOnInit();
     } else {
       console.log("input data set LRRH");
-      this.dataSet = BBReal;
+      this.dataSet = LRRH;
     }
   }
   @Input()
@@ -56,29 +60,26 @@ export class MultiLineChartComponent implements OnInit {
     this.showChars(characters);
   }
   @Input()
-  set newGradient2(gradient2:string){
+  set newGradient2(gradient2: string) {
     this._newGradient2 = gradient2;
     console.log("value for setted new gradient", gradient2);
     console.log("----value for setted character", this._newCharacter);
     this.colorChange(this._newColor, this._newCharacter);
-
   }
   @Input()
-  set newGradient1(gradient1:string){
+  set newGradient1(gradient1: string) {
     this._newGradient1 = gradient1;
     console.log("value for setted new gradient", gradient1);
     console.log("----value for setted character", this._newCharacter);
     this.colorChange(this._newColor, this._newCharacter);
-
   }
-  // @Input() newColor: strin g;
+  // @Input() newColor: string;
   @Input()
   set newColor(color: string) {
     this._newColor = color;
     console.log("value for setted newColor", color);
     console.log("----value for setted character", this._newCharacter);
     this.colorChange(this._newColor, this._newCharacter);
-
   }
   @Input()
   set newCharacter(character: string) {
@@ -86,9 +87,42 @@ export class MultiLineChartComponent implements OnInit {
     console.log("value for setted newCharacter in multi-series", character);
     this.colorChange(this._newColor, this._newCharacter);
   }
-  showChars(character) {
-    console.log("called show character", character);
-    d3.select("#" + character).style("opacity", "1");
+  showChars(characters) {
+    const dataSet = this.dataSet;
+    console.log("called show character", characters);
+    // d3.select("#" + character).style("opacity", "1");
+    var allChars = [];
+    console.log(
+      "data set in multi series right now -----------------",
+      dataSet
+    );
+    if (dataSet == LRRH) {
+      allChars = ["Grandma", "Wolf", "Blanchette", "mother", "Woodcutter"];
+    } else {
+      allChars = [
+        "Father",
+        "Elizabeth",
+        "Mother",
+        "Benjamin",
+        "Daisy",
+        "Queenie",
+        "QueeniesHusband",
+        "Daisy",
+        "Caroline"
+      ];
+    }
+
+    if (characters) {
+      for (var i = 0; i < allChars.length; i++) {
+        if (characters.includes(allChars[i])) {
+          console.log("hiding allChars", allChars[i]);
+          d3.select("#" + allChars[i]).style("opacity", "0");
+          d3.select("#" + allChars[i]).style("font", "0px san-serif");
+        } else {
+          d3.select("#" + allChars[i]).style("opacity", "1");
+        }
+      }
+    }
   }
   data: any;
   svg: any;
@@ -112,10 +146,19 @@ export class MultiLineChartComponent implements OnInit {
     this.svg = d3.select("#svgChart");
     this.svg.selectAll("*").remove();
     this.dataSet = BB;
+
+    this.hideGoBackButton = false;
+    this.ngOnInit();
+  }
+  bbGoBack() {
+    this.svg = d3.select("#svgChart");
+    this.svg.selectAll("*").remove();
+    this.dataSet = BBReal;
     this.ngOnInit();
   }
   public initComp(): void {
     this.showFlashback = true;
+    if (this.dataSet != BB) this.hideGoBackButton = true;
     this.data = this.dataSet.map(v => v.values.map(v => v.date))[0];
     //.reduce((a, b) => a.concat(b), []);
 
@@ -132,7 +175,7 @@ export class MultiLineChartComponent implements OnInit {
   private appendFlashback(): void {
     this.showFlashback = false;
 
-    d3.selectAll(".city")
+    d3.selectAll(".char")
       .append("svg:image")
       .attr("id", "flashback")
       .attr("x", 225)
@@ -154,6 +197,25 @@ export class MultiLineChartComponent implements OnInit {
   private renderGraph() {}
   private colorChange(color, character): void {
     d3.select("#" + character).style("stroke", color);
+  }
+  private LRRHColors(): void {
+    // d3.select("#" + "mother").style("fill", "");
+    // d3.select("#" + "Blanchette").style("fill", "");
+    // d3.select("#" + "Wolf").style("fill", "");
+    // d3.select("#" + "Grandma").style("fill", "");
+    // d3.select("#" + "Woodcutter").style("fill", "");
+    d3.select("#" + "Wolf")
+      .style("stroke-width", "3")
+      .style("stroke", "red");
+    d3.select("#" + "Blanchette")
+      .style("stroke-width", "3")
+      .style("stroke", "steelblue");
+    d3.select("#" + "Grandma")
+      .style("stroke-width", "3")
+      .style("stroke", "steelblue");
+    d3.select("#" + "Woodcutter")
+      .style("stroke-width", "3")
+      .style("stroke", "steelblue");
   }
   private initChart(): void {
     this.svg = d3.select("#svgChart");
@@ -202,14 +264,23 @@ export class MultiLineChartComponent implements OnInit {
   }
   private hideChars(characters: any) {
     // d3.select("#" + "Grandma").style("stroke", "red");
+    const allChars = ["Grandma", "Wolf", "Blanchette", "mother", "Woodcutter"];
     if (characters) {
-      for (let char of characters) {
-        console.log("character ", char);
-        // console.log("display value == ", d3.select("#"+char).style.position);
-        d3.select("#" + char).style("display", "none");
-        d3.select("#" + char).style("font", "30px sans-serif");
-        //  console.log("display value == ", d3.select("#"+char).style);
-        // d3.select("#" + char).style("font", "0px san-serif");
+      // for (let char of characters) {
+      //   console.log("character ", char);
+      //   // console.log("display value == ", d3.select("#"+char).style.position);
+      //   d3.select("#" + char).style("display", "none");
+      //   d3.select("#" + char).style("font", "30px sans-serif");
+      //   //  console.log("display value == ", d3.select("#"+char).style);
+      //   // d3.select("#" + char).style("font", "0px san-serif");
+      // }
+      for (var i = 0; i < allChars.length; i++) {
+        if (characters.includes(allChars[i])) {
+          console.log("hiding allChars", allChars[i]);
+          d3.select("#" + allChars[i]).style("opacity", "0");
+        } else {
+          d3.select("#" + allChars[i]).style("opacity", "1");
+        }
       }
     }
   }
@@ -294,14 +365,14 @@ export class MultiLineChartComponent implements OnInit {
   }
   // TODO: Change city to lines
   private drawPath(): void {
-    let city = this.g
-      .selectAll(".city")
+    let char = this.g
+      .selectAll(".char")
       .data(this.dataSet)
       .enter()
       .append("g")
-      .attr("class", "city");
+      .attr("class", "char");
 
-    city
+    char
       .append("path")
       .attr("class", "line")
       .attr("d", d => this.line(d.values))
@@ -313,11 +384,11 @@ export class MultiLineChartComponent implements OnInit {
       })
       .on("click", function(d) {
         console.log("clicked on path of id", d.id);
-        d3.select("#" + d.id).style("stroke", "blue");
+        // d3.select("#" + d.id).style("opacity", "0");
         d3.event.stopPropagation();
       });
-    city.append("text", "text");
-    city
+    char.append("text", "text");
+    char
       .append("text")
       .datum(function(d) {
         return { id: d.id, value: d.values[d.values.length - 1] };
@@ -335,7 +406,6 @@ export class MultiLineChartComponent implements OnInit {
         return d.id;
       })
       .on("click", function(d) {
-        console.log("clicked on city", d.id);
         d3.event.stopPropagation();
       });
   }

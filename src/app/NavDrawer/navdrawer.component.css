@@ -23,6 +23,15 @@ button {
   float: right;
 }
 
-body > app-root > nav-drawer > div:nth-child(6) > mat-drawer {
+body>app-root>nav-drawer>div:nth-child(6)>mat-drawer {
   margin-top: 200px;
+}
+
+.textContainer {
+  position: absolute;
+
+}
+
+#Wolf {
+  stroke: red;
 }
