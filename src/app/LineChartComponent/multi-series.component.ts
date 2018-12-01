@@ -104,33 +104,30 @@ export class MultiLineChartComponent implements OnInit {
     this.drawPath();
     this.opacity();
     this.drawDashed();
-    if (this.dataSet == BBReal) this.showFlashback = false;
+    if (this.dataSet == BBReal) this.appendFlashback();
     this.bbColor();
   }
 
   private appendFlashback(): void {
     this.showFlashback = false;
 
-    // d3.selectAll(".city")
-    //   .append("svg:image")
-    //   .attr("id", "flashback")
-    //   .attr("x", 225)
-    //   .attr("y", 250)
-    //   .attr("width", 150)
-    //   .attr("height", 150)
-    //   .attr("xlink:href", "../../assets/spiralTrans.png")
-    //   .on("click", function(d) {
-    //     console.log("clicked flashback");
-    //     this.svg = d3.select("#svgChart");
-    //     this.svg.selectAll("*").remove();
-    //     d3.event.stopPropagation();
-    //   })
-    //   .on("mouseover", function(d) {
-    //     console.log("hovered flashback");
-    //   })
-    //   .on("mouseout", function(d) {
-    //     console.log("out of flashback");
-    //   });
+    d3.selectAll(".city")
+      .append("svg:image")
+      .attr("id", "flashback")
+      .attr("x", 225)
+      .attr("y", 250)
+      .attr("width", 150)
+      .attr("height", 150)
+      .attr("xlink:href", "../../assets/spiralTrans.png")
+      .on("click", function(d) {
+        d3.event.stopPropagation();
+      })
+      .on("mouseover", function(d) {
+        console.log("hovered flashback");
+      })
+      .on("mouseout", function(d) {
+        console.log("out of flashback");
+      });
   }
 
   private renderGraph() {}
